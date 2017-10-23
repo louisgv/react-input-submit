@@ -79,7 +79,7 @@ export default class InputSubmit extends React.PureComponent {
 	render() {
 		return(
 			<Container>
-				<Input placeholder={this.props.container}
+				<Input placeholder={this.props.placeholder}
 					value={this.state.value}
 					onChange={this.handleInputChange}
 				/>
