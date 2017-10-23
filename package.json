@@ -1,0 +1,27 @@
+{
+	"name": "react-input-submit",
+	"version": "0.1.0",
+	"main": "index.js",
+  "devDependencies": {
+    "react": "^16.0.0",
+		"react-dom": "^16.0.0",
+		"react-scripts": "1.0.14"  
+  },
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test --env=jsdom",
+		"eject": "react-scripts eject"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/louisgv/react-input-submit.git"
+	},
+	"keywords": [],
+	"author": "lab",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/louisgv/react-input-submit/issues"
+	},
+	"homepage": "https://github.com/louisgv/react-input-submit#readme"
+}
