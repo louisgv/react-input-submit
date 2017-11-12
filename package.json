@@ -11,7 +11,7 @@
 		"build": "rimraf lib && babel src --out-dir lib --ignore test.js --copy-files",
 		"storybook": "start-storybook -p 6006",
 		"build-storybook": "build-storybook",
-		"publish": "npm run build; np"
+		"publish": "np"
 	},
 	"devDependencies": {
 		"@storybook/addon-actions": "^3.2.13",
