@@ -9,7 +9,11 @@ height: 45px;
 justify-content: center;
 `;
 
-const Input = styled.input `
+const Input = styled.input.attrs({
+  textTransform: props => props.uppercase
+    ? 'uppercase'
+    : 'none'
+})`
 border-top-left-radius: 30px;
 border-bottom-left-radius: 30px;
 
@@ -23,7 +27,7 @@ margin-right: 1em;
 line-height: 1em;
 
 text-decoration: none;
-text-transform: uppercase;
+text-transform: ${props => props.textTransform};
 
 width: 72%;
 
@@ -59,11 +63,13 @@ export default class InputSubmit extends React.PureComponent {
 
 	static propTypes = {
 		onSubmit: PropTypes.func.isRequired,
-    clearOnSubmit: PropTypes.bool
+    clearOnSubmit: PropTypes.bool,
+    uppercase: PropTypes.bool
 	}
 
   static defaultProps = {
-    clearOnSubmit: false
+    clearOnSubmit: false,
+    uppercase: false
   };
 
 	state = {
@@ -92,6 +98,7 @@ export default class InputSubmit extends React.PureComponent {
 		return(
 			<Container>
 				<Input placeholder={this.props.placeholder}
+          uppercase={this.props.uppercase}
 					value={this.state.value}
           onKeyDown={this.handleInputKeyDown}
 					onChange={this.handleInputChange}
