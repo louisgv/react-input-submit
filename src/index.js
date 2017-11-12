@@ -58,8 +58,13 @@ transition: 0.5s;
 export default class InputSubmit extends React.PureComponent {
 
 	static propTypes = {
-		onSubmit: PropTypes.func.isRequired
+		onSubmit: PropTypes.func.isRequired,
+    clearOnSubmit: PropTypes.bool
 	}
+
+  static defaultProps = {
+    clearOnSubmit: false
+  };
 
 	state = {
 		value: ''
@@ -67,13 +72,20 @@ export default class InputSubmit extends React.PureComponent {
 
 	handleSubmit = () => {
 		this.props.onSubmit(this.state.value);
+    if (this.props.clearOnSubmit) {
+      this.setState({ value : '' });
+    }
 	}
 
+  handleInputKeyDown = ({keyCode}) => {
+    if (keyCode === 13) {
+      this.handleSubmit()
+    }
+  }
+
 	handleInputChange = (e) => {
-		const value = e.target.value;
-		this.setState({
-			value
-		});
+		const {value} = e.target;
+		this.setState({ value });
 	}
 
 	render() {
@@ -81,6 +93,7 @@ export default class InputSubmit extends React.PureComponent {
 			<Container>
 				<Input placeholder={this.props.placeholder}
 					value={this.state.value}
+          onKeyDown={this.handleInputKeyDown}
 					onChange={this.handleInputChange}
 				/>
 				<Button onClick={this.handleSubmit}>SUBMIT</Button>

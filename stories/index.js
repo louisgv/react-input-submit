@@ -13,4 +13,7 @@ import InputSubmit from './../src';
 storiesOf('InputSubmit', module)
 	.add('simple input', () => (
 		<InputSubmit onSubmit={action('OnSubmit')} placeholder="Put something here"/>
-	));
+	))
+  .add('simple input that clear on enter', () => (
+    <InputSubmit onSubmit={action('OnSubmit')} clearOnSubmit placeholder="Put something here"/>
+  ))
