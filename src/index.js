@@ -9,11 +9,7 @@ height: 45px;
 justify-content: center;
 `;
 
-const Input = styled.input.attrs({
-  textTransform: props => props.uppercase
-    ? 'uppercase'
-    : 'none'
-})`
+const Input = styled.input `
 border-top-left-radius: 30px;
 border-bottom-left-radius: 30px;
 
@@ -27,7 +23,11 @@ margin-right: 1em;
 line-height: 1em;
 
 text-decoration: none;
-text-transform: ${props => props.textTransform};
+
+text-transform: ${props => props.uppercase
+  ? 'uppercase'
+  : 'none'
+};
 
 width: 72%;
 
