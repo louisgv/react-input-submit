@@ -23,7 +23,11 @@ margin-right: 1em;
 line-height: 1em;
 
 text-decoration: none;
-text-transform: uppercase;
+
+text-transform: ${props => props.uppercase
+	? 'uppercase'
+	: 'none'
+};
 
 width: 72%;
 
@@ -58,8 +62,17 @@ transition: 0.5s;
 export default class InputSubmit extends React.PureComponent {
 
 	static propTypes = {
-		onSubmit: PropTypes.func.isRequired
+		onSubmit: PropTypes.func.isRequired,
+		clearOnSubmit: PropTypes.bool,
+		uppercase: PropTypes.bool,
+		buttonText: PropTypes.string
 	}
+
+	static defaultProps = {
+		clearOnSubmit: false,
+		uppercase: false,
+		buttonText: 'SUBMIT'
+	};
 
 	state = {
 		value: ''
@@ -67,24 +80,33 @@ export default class InputSubmit extends React.PureComponent {
 
 	handleSubmit = () => {
 		this.props.onSubmit(this.state.value);
+		if (this.props.clearOnSubmit) {
+			this.setState({ value : '' });
+		}
+	}
+
+	handleInputKeyDown = ({keyCode}) => {
+		if (keyCode === 13) {
+			this.handleSubmit()
+		}
 	}
 
 	handleInputChange = (e) => {
-		const value = e.target.value;
-		this.setState({
-			value
-		});
+		const {value} = e.target;
+		this.setState({ value });
 	}
 
 	render() {
 		return(
 			<Container className={this.props.className}>
 				<Input placeholder={this.props.placeholder}
+					uppercase={this.props.uppercase}
 					value={this.state.value}
+					onKeyDown={this.handleInputKeyDown}
 					onChange={this.handleInputChange}
 				/>
 				<Button onClick={this.handleSubmit}>
-					{this.props.buttonText || 'SUBMIT'}
+					{this.props.buttonText}
 				</Button>
 			</Container>
 		);

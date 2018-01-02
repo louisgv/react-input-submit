@@ -1,3 +1,9 @@
+# React input submit
+
+It's a reactive styled input submit for all occasion. All you need to do, is use it with its onSubmit handler, and you're all done.
+
+# LICENSE
+
 MIT License
 
 Copyright (c) 2017 Lab <lab@mail.rit.edu>
