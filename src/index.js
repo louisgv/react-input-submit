@@ -98,17 +98,19 @@ export default class InputSubmit extends React.PureComponent {
 
 	render() {
 		return(
-			<Container className={this.props.className}>
-				<Input placeholder={this.props.placeholder}
-					uppercase={this.props.uppercase}
-					value={this.state.value}
-					onKeyDown={this.handleInputKeyDown}
-					onChange={this.handleInputChange}
-				/>
-				<Button onClick={this.handleSubmit}>
-					{this.props.buttonText}
-				</Button>
-			</Container>
+			<div className={this.props.className}>
+				<Container>
+					<Input placeholder={this.props.placeholder}
+						uppercase={this.props.uppercase}
+						value={this.state.value}
+						onKeyDown={this.handleInputKeyDown}
+						onChange={this.handleInputChange}
+					/>
+					<Button onClick={this.handleSubmit}>
+						{this.props.buttonText}
+					</Button>
+				</Container>
+			</div>
 		);
 	}
 }
