@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {ThemeProvider} from 'styled-components';
 
+import {Button, Input, Container} from './component';
+
 import theme from './theme';
 
-import {Button, Input, Container} from './component';
 
 export default class InputSubmit extends React.PureComponent {
 
