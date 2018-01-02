@@ -1,63 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import {ThemeProvider} from 'styled-components';
 
-const Container = styled.div `
-display: flex;
-width: 100%;
-height: 45px;
-justify-content: center;
-`;
+import theme from './theme';
 
-const Input = styled.input `
-border-top-left-radius: 30px;
-border-bottom-left-radius: 30px;
-
-border-color: black;
-
-font-size: 14.4px;
-
-padding-left: 1em;
-margin-right: 1em;
-
-line-height: 1em;
-
-text-decoration: none;
-
-text-transform: ${props => props.uppercase
-	? 'uppercase'
-	: 'none'
-};
-
-width: 72%;
-
-:active, :focus {
-	outline:none;
-}
-`;
-
-const Button = styled.button `
-border-top-right-radius: 30px;
-border-bottom-right-radius: 30px;
-
-background-color: black;
-
-border-color: black;
-color: white;
-width: 18%;
-
-font-size: 14.4px;
-
-transition: 0.5s;
-
-:hover {
-	opacity: 0.6;
-}
-
-:active, :focus {
-	outline:none;
-}
-`;
+import {Button, Input, Container} from './component';
 
 export default class InputSubmit extends React.PureComponent {
 
@@ -65,13 +12,17 @@ export default class InputSubmit extends React.PureComponent {
 		onSubmit: PropTypes.func.isRequired,
 		clearOnSubmit: PropTypes.bool,
 		uppercase: PropTypes.bool,
-		buttonText: PropTypes.string
+		buttonText: PropTypes.string,
+		theme: PropTypes.object,
+		palette: PropTypes.string
 	}
 
 	static defaultProps = {
 		clearOnSubmit: false,
 		uppercase: false,
-		buttonText: 'SUBMIT'
+		buttonText: 'SUBMIT',
+		palette: 'primary',
+		theme
 	};
 
 	state = {
@@ -99,17 +50,21 @@ export default class InputSubmit extends React.PureComponent {
 	render() {
 		return(
 			<div className={this.props.className}>
-				<Container>
-					<Input placeholder={this.props.placeholder}
-						uppercase={this.props.uppercase}
-						value={this.state.value}
-						onKeyDown={this.handleInputKeyDown}
-						onChange={this.handleInputChange}
-					/>
-					<Button onClick={this.handleSubmit}>
-						{this.props.buttonText}
-					</Button>
-				</Container>
+				<ThemeProvider theme={this.props.theme} >
+					<Container palette={this.props.palette}>
+
+						<Input palette={this.props.palette} placeholder={this.props.placeholder}
+							uppercase={this.props.uppercase}
+							value={this.state.value}
+							onKeyDown={this.handleInputKeyDown}
+							onChange={this.handleInputChange}
+						/>
+
+						<Button palette={this.props.palette} onClick={this.handleSubmit}>
+							{this.props.buttonText}
+						</Button>
+					</Container>
+				</ThemeProvider>
 			</div>
 		);
 	}
