@@ -33,3 +33,6 @@ storiesOf('InputSubmit', module)
   .add('should inherit style from external source', () => (
 	<StyledInputSubmit onSubmit={action('OnSubmit')} uppercase placeholder="Put something here"/>
   ))
+  .add('should reverse color properly', () => (
+  	<InputSubmit reverse onSubmit={action('OnSubmit')} uppercase placeholder="Put something here"/>
+  ))

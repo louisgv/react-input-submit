@@ -4,9 +4,6 @@ import {ThemeProvider} from 'styled-components';
 
 import {Button, Input, Container} from './component';
 
-import theme from './theme';
-
-
 export default class InputSubmit extends React.PureComponent {
 
 	static propTypes = {
@@ -15,15 +12,17 @@ export default class InputSubmit extends React.PureComponent {
 		uppercase: PropTypes.bool,
 		buttonText: PropTypes.string,
 		theme: PropTypes.object,
-		palette: PropTypes.string
+		palette: PropTypes.string,
+		reverse: PropTypes.bool
 	}
 
 	static defaultProps = {
 		clearOnSubmit: false,
 		uppercase: false,
 		buttonText: 'SUBMIT',
-		palette: 'primary',
-		theme
+		palette: 'grayscale',
+		reverse: false,
+		theme: {}
 	};
 
 	state = {
@@ -52,16 +51,18 @@ export default class InputSubmit extends React.PureComponent {
 		return(
 			<div className={this.props.className}>
 				<ThemeProvider theme={this.props.theme} >
-					<Container palette={this.props.palette}>
+					<Container palette={this.props.palette} reverse={this.props.reverse}>
 
-						<Input palette={this.props.palette} placeholder={this.props.placeholder}
+						<Input palette={this.props.palette} reverse={this.props.reverse}
+							placeholder={this.props.placeholder}
 							uppercase={this.props.uppercase}
 							value={this.state.value}
 							onKeyDown={this.handleInputKeyDown}
 							onChange={this.handleInputChange}
 						/>
 
-						<Button palette={this.props.palette} onClick={this.handleSubmit}>
+						<Button palette={this.props.palette} reverse={this.props.reverse}
+							onClick={this.handleSubmit}>
 							{this.props.buttonText}
 						</Button>
 					</Container>
