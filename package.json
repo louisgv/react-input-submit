@@ -7,33 +7,35 @@
 	],
 	"description": "Simple input component with a submit button",
 	"scripts": {
-		"start": "npm run storybook",
+		"start": "npm run build-storybook; npm run storybook",
 		"build": "rimraf lib && babel src --out-dir lib --ignore test.js --copy-files",
 		"storybook": "start-storybook -p 6006",
 		"build-storybook": "build-storybook",
-		"publish": "np"
+		"publish": "np",
+		"pages: gh-pages -d storybook-static"
+
 	},
 	"devDependencies": {
 		"@storybook/addon-actions": "^3.2.13",
 		"@storybook/react": "^3.2.13",
 		"babel-cli": "^7.0.0-beta.3",
 		"babel-core": "7.0.0-beta.3",
-		"babel-eslint": "^7.2.3",
-		"babel-jest": "^22.0.4",
+		"babel-eslint": "^9.0.0",
+		"babel-jest": "^23.4.2",
 		"babel-preset-env": "^7.0.0-beta.3",
 		"babel-preset-react": "^7.0.0-beta.3",
 		"babel-preset-stage-2": "^7.0.0-beta.3",
 		"enzyme": "^3.1.0",
-		"eslint": "^4.1.1",
+		"eslint": "^5.4.0",
 		"eslint-config-react-app": "^2.0.1",
 		"eslint-plugin-flowtype": "^2.34.1",
 		"eslint-plugin-import": "^2.6.0",
-		"eslint-plugin-jsx-a11y": "^5.1.1",
+		"eslint-plugin-jsx-a11y": "^6.1.1",
 		"eslint-plugin-react": "^7.1.0",
-		"np": "^2.16.0",
+		"np": "^3.0.4",
 		"react": "^16.0.0",
 		"react-addons-test-utils": "^16.0.0-alpha.3",
-		"react-dev-utils": "^4.1.0",
+		"react-dev-utils": "^5.0.2",
 		"react-dom": "^16.0.0",
 		"rimraf": "^2.6.2"
 	},
@@ -49,9 +51,10 @@
 	},
 	"homepage": "https://github.com/louisgv/react-input-submit#readme",
 	"dependencies": {
+		"gh-pages": "^1.2.0",
 		"prop-types": "^15.6.0",
 		"react-router-dom": "^4.2.2",
-		"styled-components": "^2.2.1",
+		"styled-components": "^3.4.5",
 		"styled-theme": "^0.3.3"
 	}
 }
