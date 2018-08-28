@@ -1,6 +1,6 @@
 {
 	"name": "react-input-submit",
-	"version": "1.3.0",
+	"version": "1.4.0",
 	"main": "lib/index.js",
 	"files": [
 		"lib"
@@ -13,7 +13,6 @@
 		"build-storybook": "build-storybook",
 		"publish": "np",
 		"pages": "gh-pages -d storybook-static"
-
 	},
 	"devDependencies": {
 		"@storybook/addon-actions": "^3.2.13",
