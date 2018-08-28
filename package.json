@@ -12,7 +12,7 @@
 		"storybook": "start-storybook -p 6006",
 		"build-storybook": "build-storybook",
 		"publish": "np",
-		"pages: gh-pages -d storybook-static"
+		"pages": "gh-pages -d storybook-static"
 
 	},
 	"devDependencies": {
